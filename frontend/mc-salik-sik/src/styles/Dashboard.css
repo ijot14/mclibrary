@@ -1,0 +1,140 @@
+/* Import Google Font at the top */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap');
+
+/* Container for the entire page */
+.container {
+    margin-top: 20px;
+}
+
+/* Search and Filter input fields */
+input[type="text"], select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Styling for the year group titles */
+h4 {
+    margin-top: 30px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #fff; /* White text for better contrast on dark background */
+}
+
+/* Card styles for book details */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.459); /* Semi-transparent background for readability */
+}
+
+.card:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #000; /* Keep black for card title for readability */
+}
+
+.card-text {
+    font-size: 14px;
+    color: #666;
+}
+
+.mb-3, .mb-4 {
+    margin-bottom: 20px;
+}
+
+/* Aligning text inside the cards */
+.card-body p {
+    margin: 0;
+}
+
+/* Style for loading and error messages */
+.text-center {
+    text-align: center;
+}
+
+.text-danger {
+    color: red;
+}
+
+/* Hover pointer for clickable items */
+.card[style*="cursor: pointer"] {
+    cursor: pointer;
+}
+
+/* Responsive grid layout */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-md-4 {
+    flex: 0 0 33.3333%;
+    max-width: 33.3333%;
+    padding: 10px;
+}
+
+/* Dashboard background styling */
+.dashboard {
+    background-image: url('../styles/dash.jpg'); /* Adjust the path to your image */
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100vh;
+    width: 100%;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 20px;
+}
+
+/* Sticky navbar styling */
+.navbar {
+    background-color: #23063a88 !important; /* Darker violet for better contrast */
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.navbar-brand {
+    color: #ffffff !important; /* White color enforced */
+    font-family: 'Roboto', sans-serif;
+    font-size: 50px;
+    font-weight: bold;
+}
+
+.nav-link {
+    color: #ffffff; /* White text for links */
+}
+
+.nav-link:hover {
+    background-color: #360062; /* Darker shade for hover effect */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,215 @@
+/* Base Styles */
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f4f4f4; /* Light background for contrast */
+  margin: 0;
+  padding: 0;
+  color: #333; /* Dark text for readability */
+}
+
+/* Navbar Styles */
+/* Transparent Navbar Styles */
+.navbar {
+  background-color: rgba(75, 0, 130, 0.8); /* Dark violet with 80% opacity */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(5px); /* Adds a subtle blur effect */
+}
+
+.navbar-brand {
+  color: #ffffff !important; /* White color enforced */
+  font-family: 'Roboto', sans-serif;
+  font-size: 50px;
+  font-weight: bold;
+}
+
+.nav-link:hover {
+  background-color: rgba(54, 0, 98, 0.8); /* Slightly darker shade for hover */
+}
+
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  padding: 8px 15px;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.nav-link:hover {
+  background-color: #360062; /* Darker shade for hover effect */
+}
+
+/* Hero Section */
+.hero {
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 48px;
+  margin: 0;
+}
+
+/* Course Cards */
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  overflow: hidden;
+  transition: transform 0.2s, box-shadow 0.2s;
+  flex: 1 0 30%;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card-title {
+  font-size: 1.5rem;
+  color: #007bff;
+  margin: 10px;
+}
+
+.card-text {
+  font-size: 0.9rem;
+  color: #555;
+  margin: 10px;
+}
+
+/* Footer Styles */
+.footer {
+  background-color: #007bff;
+  color: #ffffff;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Login and Signup Form Styles */
+.login-container {
+  background-color: #f0f8ff;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px;
+}
+
+.login-form {
+  background-color: white;
+  width: 300px;
+  padding: 15px;
+  border: 1px solid #007bff;
+  border-radius: 5px;
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+.login-form input {
+  width: 100%;
+  padding: 8px;
+  margin: 10px 0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.login-form button {
+  background-color: #007bff;
+  color: white;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.login-form button:hover {
+  background-color: #0056b3;
+}
+
+/* Dashboard Background and Animation */
+@keyframes backgroundZoom {
+  0% {
+    background-size: 100%;
+  }
+  50% {
+    background-size: 105%;
+  }
+  100% {
+    background-size: 100%;
+  }
+}
+
+.dashboard {
+  background-image: url('../styles/dash.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  min-height: 100vh;
+  width: 100%;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 20px;
+  animation: backgroundZoom 20s ease-in-out infinite;
+}
+
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .nav-item {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .card {
+    margin: 10px;
+    flex: 1 0 100%;
+  }
+
+  .login-container {
+    padding: 10px;
+  }
+
+  .login-form {
+    width: 100%;
+  }
+}
+

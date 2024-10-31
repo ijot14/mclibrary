@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from './Navbar'; // Import the Navbar component
-import '../styles/Dashboard.css'; // Import the CSS file for styling
+import Navbar from './Navbar';
+import Swal from 'sweetalert2';
+import '../styles/Dashboard.css';
 import '../styles/App.css';
 
 export default function Dashboard() {
@@ -14,28 +15,40 @@ export default function Dashboard() {
 
     useEffect(() => {
         const fetchBooks = async () => {
+            // Display loading alert
+            Swal.fire({
+                title: 'Loading Thesis...',
+                text: 'Please wait while we fetch the data.',
+                allowOutsideClick: false,
+                didOpen: () => {
+                    Swal.showLoading();
+                }
+            });
+
             try {
-                const response = await fetch('http://localhost:3000/api/research');
+                const response = await fetch('https://backend-j2o4.onrender.com/api/research');
                 if (!response.ok) {
-                    throw new Error('Failed to fetch books');
+                    throw new Error('Failed to fetch thesis');
                 }
                 const data = await response.json();
                 setBooks(data);
 
+                // Extract unique years from data and sort them
                 const uniqueYears = [...new Set(data.map(book => book.year.trim()))]
                     .filter(year => year)
                     .sort((a, b) => b - a);
                 setYears(uniqueYears);
             } catch (err) {
-                setError('Failed to fetch books. Please try again later.');
+                setError('Failed to fetch thesis. Please try again later.');
             } finally {
                 setLoading(false);
+                Swal.close(); // Close the loading alert
             }
         };
 
         fetchBooks();
 
-        const savedSearch = localStorage.getItem('bookSearch');
+        const savedSearch = localStorage.getItem('thesisSearch');
         if (savedSearch) setSearch(savedSearch);
     }, []);
 
@@ -51,7 +64,7 @@ export default function Dashboard() {
     const handleSearchChange = (e) => {
         const value = e.target.value;
         setSearch(value);
-        localStorage.setItem('bookSearch', value);
+        localStorage.setItem('thesisSearch', value);
     };
 
     const handleYearChange = (e) => {
@@ -73,7 +86,10 @@ export default function Dashboard() {
 
     const handleClick = (url) => {
         if (url) {
+            console.log("Opening URL:", url); // Check if URL is correct
             window.open(url, '_blank');
+        } else {
+            Swal.fire('No PDF Available', 'This thesis does not have an available PDF link.', 'info');
         }
     };
 
@@ -91,8 +107,8 @@ export default function Dashboard() {
     const groupedBooks = groupBooksByYear();
 
     return (
-        <div className="dashboard"> {/* Ensure the dashboard class is applied here */}
-            <Navbar /> {/* Navbar is included at the top */}
+        <div className="dashboard">
+            <Navbar />
             <div className="container mt-5">
                 <h2 className="text-center mb-4">Thesis Abstract</h2>
                 <div className="row mb-4">
@@ -103,7 +119,7 @@ export default function Dashboard() {
                             value={search}
                             onChange={handleSearchChange}
                             className="form-control"
-                            aria-label="Search for a book, author, or type"
+                            aria-label="Search for a thesis, author, or type"
                         />
                     </div>
                     <div className="col-md-6">
@@ -121,13 +137,13 @@ export default function Dashboard() {
                     </div>
                 </div>
                 {loading ? (
-                    <p className="text-center" aria-live="polite">Loading books...</p>
+                    <p className="text-center" aria-live="polite">Loading thesis...</p>
                 ) : error ? (
                     <p className="text-center text-danger" aria-live="polite">{error}</p>
                 ) : (
                     <div className="row">
                         {Object.keys(groupedBooks).length === 0 ? (
-                            <p className="text-center">No books found.</p>
+                            <p className="text-center">No thesis found.</p>
                         ) : (
                             Object.keys(groupedBooks).sort((a, b) => b - a).map(year => (
                                 <div key={year} className="mb-4">

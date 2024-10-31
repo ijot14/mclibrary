@@ -71,7 +71,7 @@ const LoginForm = () => {
     setError('');
 
     try {
-      const response = await fetch('http://localhost:3000/login', {
+      const response = await fetch('https://backend-j2o4.onrender.com/api/login', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
